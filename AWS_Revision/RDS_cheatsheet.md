@@ -8,7 +8,7 @@ Amazon Relational Database Service (RDS) simplifies setting up, operating, and s
 
 In addition, Amazon Aurora is available as a high-performance, fully managed database service that is compatible with MySQL and PostgreSQL. Aurora offers enhanced scalability, reliability, and performance compared to traditional engines, making it a popular choice for demanding workloads
 
-**AWS manages**:
+Managed service, i.e. **AWS manages**:
 
 - Hardware
 - Operating System
@@ -16,14 +16,14 @@ In addition, Amazon Aurora is available as a high-performance, fully managed dat
 - Backups
 - High availability
 
-**You manage**:
+**Customer manages**:
 
 - Database contents
 - Users
 - Permissions
 - Application connections
 
-Supported Database Engines
+Supported Database Engines:
 
 - MySQL
 - PostgreSQL
@@ -40,9 +40,7 @@ Without RDS you would need to:
 - Manage replication
 - Replace failed hardware
 
-With RDS AWS handles most of this automatically.
-
-Benefits:
+With RDS AWS handles most of this automatically, including:
 
 - Automated backups
 - Automatic patching
@@ -60,7 +58,7 @@ You choose:
 - Storage size
 - Storage
 
-Database data stored on EBS volumes. Types include:
+Database data is stored on EBS volumes. Volume types include:
 
 - General Purpose SSD (gp3)
 - Provisioned IOPS SSD
@@ -73,7 +71,7 @@ Achieve **High Availability** with **Multi-AZ**
 
 Primary Database --> Synchronous Replication --> Standby Database
 
-Usually placed in another Availability Zone.
+Standby DB is usually placed in another Availability Zone.
 
 Benefits:
 
@@ -81,17 +79,11 @@ Benefits:
 - Increased availability
 - Protection from AZ failure
 
-Multi-AZ is for High Availability, **NOT** for read scaling
+Multi-AZ is for High Availability, **NOT** for performance scaling
 
 ### Read Replicas
 
-Used to improve database read performance.
-
-Use cases:
-
-- Reporting
-- Analytics
-- Heavy read workloads
+Used to improve database read performance for read heavy workloads.
 
 Key Point:
 
@@ -286,13 +278,13 @@ Key capabilities include the following:
 
 ### Amazon Neptune
 
-Amazon Neptune is AWS’s fully managed NoSQL graph database, designed for workloads where relationships between data points are critical.
+Amazon Neptune is AWS’s fully managed **NoSQL graph database**, designed for workloads where relationships between data points are critical.
 
 This makes Neptune a strong choice for applications such as fraud detection, knowledge graphs, recommendation engines, and social networking platforms.
 
 ### Amazon ElastiCache
 
-Amazon ElastiCache is a fully managed in-memory caching and database service designed to simplify deploying, operating, and scaling high-speed data layers in the cloud. It supports two open source engines: Redis and Memcached, letting you plug into existing tools.
+Amazon ElastiCache is a fully managed **in-memory caching** and database service designed to simplify deploying, operating, and scaling high-speed data layers in the cloud. It supports two open source engines: **Redis** and **Memcached**, letting you plug into existing tools.
 
 ## Database Migration Tools: DMS and SCT
 
@@ -300,6 +292,49 @@ A database migration tool moves your data, schemas, and database-specific behavi
 
 One of the key benefits of these tools is that they minimize downtime. They keep your source database running while syncing changes over to the target.
 
-While AWS DMS handles moving your data, the AWS Schema Conversion Tool (SCT) takes care of transforming your schemas and database code. The SCT generates a detailed report highlighting what it converted automatically and what requires manual adjustments, which can save months of work compared to rewriting everything by hand.
+While **AWS DMS** handles moving your data, the **AWS Schema Conversion Tool** (SCT) takes care of **transforming** your schemas and database code. The SCT generates a detailed report highlighting what it converted automatically and what requires manual adjustments, which can save months of work compared to rewriting everything by hand.
 
 DMS is a fully managed AWS service that you configure through the AWS Management Console or CLI. It enables both homogeneous and heterogeneous database migrations with minimal downtime.
+
+## Chapter Quiz
+
+What is a key advantage of using a self-managed database on Elastic Compute Cloud (EC2)?
+
+1. Full control and flexibility over configuration and management
+2. Automated backups and patching
+3. Managed scaling with minimal downtime
+4. Single-digit millisecond latency at scale
+
+What does Amazon DynamoDB primarily provide?
+
+1. Managed relational database
+2. In-memory caching
+3. Fully managed NoSQL key-value and document database
+4. Schema conversion
+
+What type of scaling does DynamoDB support to handle massive workloads?
+
+1. Horizontal scaling
+2. Vertical scaling only
+3. No scaling capabilities
+4. Manual scaling with downtime
+
+What are Redis and Memcached supported by?
+
+1. Amazon Relational Database Service (RDS)
+2. Amazon DynamoDB
+3. Amazon ElastiCache
+4. Amazon Aurora
+
+Which tool would you use to convert embedded SQL in applications during migration?
+
+1. Amazon RDS
+2. Amazon DynamoDB
+3. AWS Database Migration Service (DMS)
+4. AWS Schema Conversion Tool (SCT)
+
+<details><summary>Answers:</summary>
+
+1 / 3 / 1 / 3 / 4
+
+</details>
