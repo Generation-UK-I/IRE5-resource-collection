@@ -4,7 +4,7 @@
 
 One of the most important exam concepts.
 
-The AWS Shared Responsibility Model defines how compliance, governance, and security duties are divided between AWS and the customer—with the primary focus on security. At a high level, AWS secures the cloud itself: the physical infrastructure, networking, and foundational services. Customers are responsible for securing what they put into the cloud: their applications, configurations, and data.
+The AWS Shared Responsibility Model defines how compliance, governance, and security duties are divided between AWS and the customer, with the primary focus on security. At a high level, AWS secures the cloud itself; Customers are responsible for securing what they put into the cloud.
 
 AWS is responsible for security **OF** the cloud:
 
@@ -22,7 +22,7 @@ Customers are responsible for security **IN** the cloud:
 - Encryption choices
 - Operating systems (for EC2)
 
-The balance of responsibilities depends on the type of AWS service being used: 
+The balance of responsibilities depends on the type of AWS service being used:
 
 - With **IaaS** offerings like Amazon EC2, customers manage more, including the operating system, network controls, and applications. 
 - With **PaaS** models, such as Amazon RDS, AWS takes on more of the heavy lifting, handling the OS and underlying platform, while customers focus mainly on data and access.
@@ -132,15 +132,131 @@ Benefits:
 
 ### AWS Certificate Manager (ACM)
 
-Manages SSL/TLS certificates.
+Encryption in transit needs TLS certificates, and AWS Certificate Manager (ACM) takes the complexity out of managing them.
 
 Used to secure:
 
 - Websites
 - Load Balancers
 - APIs
+- CloudFront
 
 Benefits:
 
 - Free AWS certificates
 - Automatic renewal
+
+## Additional Security Services
+
+### AWS Network Firewall
+
+Sitting at the edge of your VPC—near internet gateways, VPNs, or Direct Connect links, AWS Network Firewall adds a much deeper layer of inspection. It combines stateful and stateless filtering. **Stateful** means it understands the context of a connection, like a conversation that started with a handshake and continues with replies. Once it allows this session, return traffic flows automatically. **Stateless** rules work faster but more simply, blocking or allowing individual packets without tracking the full session.
+
+AWS Network Firewall can dive deep: decrypting TLS traffic, scanning protocols, and acting as an intrusion prevention system (IPS).
+
+### Amazon Inspector
+
+Amazon Inspector is a vulnerability management service that scans your compute resources—like EC2, container images in the Amazon Elastic Container Registry (ECR), or Lambda functions—for known software flaws and unintended exposure.
+
+It checks for issues like outdated OS packages, misconfigurations, and open network paths that shouldn’t exist, flagging any known common vulnerabilities and exposures (CVEs).
+
+Inspector works behind the scenes continuously, kicking off assessments automatically when something changes—like a new version of an application or a new image pushed to the ECR. You can also connect it to Security Hub or EventBridge for automated workflows, alerts, or remediation pipelines.
+
+### Amazon Detective?
+
+Amazon Detective is a fully managed AWS Security Service that automatically collects and analyzes log data from your cloud environment.
+
+It uses machine learning, statistical analysis, and graph theory to build a unified, interactive behavior graph. This makes it easy to find the root cause of security findings or suspicious activities without needing to script custom queries.
+
+### Amazon GuardDuty
+
+GuardDuty is AWS’s built-in threat detection service. It’s fully managed, constantly running, and uses ML to sift through massive streams of data. This includes CloudTrail events, VPC flow logs, DNS queries, and things like Elastic Kubernetes Service (EKS) audit logs, RDS login attempts, S3 data access, Lambda activity, and more.
+
+The service looks for signs of trouble, such as unauthorized API calls, malware in your workloads, data exfiltration, cryptomining, and runtime threats inside containers or EC2 instances. All of it gets analyzed using behavioral modeling, anomaly detection, and threat intelligence from AWS and partners.
+
+### AWS Shield
+
+A managed threat protection service that defends applications and networks against Distributed Denial of Service (DDoS) attacks.
+
+Protection Tiers:
+
+- **AWS Shield Standard**: Automatically enabled for all AWS customers at no extra cost. It provides always-on, baseline protection against common Layer 3 (network) and Layer 4 (transport) infrastructure attacks like SYN floods and UDP reflections.
+- **AWS Shield Advanced**: An optional, paid subscription tier for mission-critical workloads. It adds comprehensive Layer 7 (application) protection, real-time metrics, integration with AWS WAF, and 24/7 access to the Shield Response Team.
+
+### AWS Trusted Advisor
+
+AWS Trusted Advisor acts as a best-practice guide. It continuously scans your AWS environment and offers automated recommendations to improve security, performance, fault tolerance, and cost efficiency. On the security front, it flags critical issues such as whether MFA is enabled on the root account, whether unused security group ports remain open, or if IAM access keys are old and unused.
+
+### AWS WAF (Web Application Firewall)
+
+AWS WAF (Web Application Firewall) focuses on application-layer traffic. Specifically, this is for HTTP and HTTPS requests. You can define custom rules to fit your environment, such as blocking based on IP address, request size, headers, patterns like SQL injection, or geographic origin.
+
+It can block:
+
+- SQL Injection
+- Cross-Site Scripting (XSS)
+- Malicious traffic
+
+Works with:
+
+- CloudFront
+- Application Load Balancer
+- API Gateway
+
+### AWS Config
+
+AWS Config is a service that continuously monitors and records the configuration of AWS resources. This allows you to track changes and evaluate them against compliance requirements
+
+By maintaining a detailed history of resource states, Config helps organizations identify misconfigurations, enforce internal policies, and meet external audit requirements.
+
+For example, it can automatically check whether S3 buckets are publicly accessible, confirm that IAM policies follow least privilege, or verify that encryption settings are enabled.
+
+This continuous visibility not only strengthens security but also makes it easier to troubleshoot operational issues and prove compliance with regulatory standards.
+
+### AWS Security Hub
+
+The Security Hub aggregates and prioritizes security findings from across multiple AWS services—such as GuardDuty, Inspector, and Config—and presents them in a single, unified dashboard. This makes it easier to monitor your AWS environment for threats, misconfigurations, and compliance gaps.
+
+### Amazon Macie
+
+Macie focuses on protecting sensitive data stored in Amazon S3. It’s built to discover, classify, and monitor personal and financial information automatically, using ML and pattern matching.
+
+Once enabled Macie starts scanning your S3 buckets—checking both data contents and access configurations. It flags issues like publicly exposed data or misconfigured permissions and generates findings labeled as “SensitiveData” or “Policy.”
+
+You can also send alerts to Security Hub or your existing pipelines via SNS.
+
+For audit and compliance workflows, Macie can export detailed discovery reports to an encrypted S3 bucket using KMS. This makes it easier to document findings, analyze trends, and prepare for audits.
+
+### Service Comparison
+
+|Service|Main Purpose|
+|---|---|
+|IAM|Permissions|
+|MFA|Extra Login Security|
+|Cognito|Application Authentication|
+|KMS|Encryption Keys|
+|Secrets Manager|Password Storage|
+|ACM|SSL Certificates|
+|Inspector|Vulnerability Scanning|
+|GuardDuty|Threat Detection|
+|Shield|DDoS Protection|
+|WAF|Web Application Protection|
+|Security Hub|Central Security Dashboard|
+|CloudTrail|Audit Logging|
+|CloudWatch|Monitoring|
+|Config|Configuration Tracking|
+
+### Frequently Tested Scenarios
+
+|Requirement|Relevant Service|
+|---|---|
+|A company needs encryption keys.|KMS|
+|A company needs to store database credentials securely.|Secrets Manager|
+|A company needs DDoS protection.|Shield|
+|A company needs protection from SQL injection attacks.|WAF|
+|A company needs application users to log in.|Cognito|
+|A company needs to detect suspicious account activity.|GuardDuty|
+|A company needs to track API calls.|CloudTrail|
+|A company needs vulnerability scanning.|Inspector|
+|A company needs a central view of security findings.|Security Hub|
+|A company needs configuration change history.|AWS Config|
