@@ -84,25 +84,69 @@
 |Amazon Transcribe|Converts speech into text using automatic speech recognition.|
 |Amazon Translate|Provides neural machine translation between multiple languages.|
 |**MANAGEMENT AND GOVERNANCE**|
-|AWS Auto Scaling||
-|AWS CloudFormation||
-|AWS CloudTrail||
-|Amazon CloudWatch||
-|AWS Compute Optimizer||
-|AWS Config||
-|AWS Control Tower||
-|AWS Health Dashboard||
-|AWS Launch Wizard||
-|AWS License Manager||
-|AWS Management Console||
-|AWS Organizations||
-|AWS Resource Groups and Tag Editor||
-|AWS Service Catalog||
-|AWS Systems Manager||
-|AWS Trusted Advisor||
-|AWS Well-Architected Tool||
-|||
-|||
-|||
-|||
-|||
+|AWS Auto Scaling|Automatically adjusts resources based on demand to maintain performance and optimise cost.|
+|AWS CloudFormation|Infrastructure as Code (IaC) service for deploying AWS resources using templates.|
+|AWS CloudTrail|Records AWS account activity and API calls for auditing and compliance.|
+|Amazon CloudWatch|Provides monitoring, logging, metrics, dashboards, and alerting across AWS services.|
+|AWS Compute Optimizer|Recommends optimal AWS resource sizes based on observed usage patterns.|
+|AWS Config|Tracks AWS resource configurations and records configuration changes over time.|
+|AWS Control Tower|Automates the setup and governance of a secure multi-account AWS environment.|
+|AWS Health Dashboard|Provides personalised information about AWS service events and account-specific issues.|
+|AWS Launch Wizard|Guides users through the deployment of complex enterprise applications on AWS.|
+|AWS License Manager|Helps manage and track software licenses across AWS and on-premises environments.|
+|AWS Management Console|The web-based interface used to manage AWS resources and services.|
+|AWS Organizations|Allows centralised management and governance of multiple AWS accounts.|
+|AWS Resource Groups and Tag Editor|Tools for organising, searching, and managing AWS resources using tags.|
+|AWS Service Catalog|Allows organisations to publish approved AWS products and resources for internal use.|
+|AWS Systems Manager|Provides operational management, automation, patching, and configuration capabilities.|
+|AWS Trusted Advisor|Analyses AWS environments and provides recommendations for cost, security, performance, and reliability.|
+|AWS Well-Architected Tool|Helps review workloads against AWS Well-Architected Framework best practices.|
+|**MIGRATION AND TRANSFER**|
+|AWS Application Discovery Service|Collects information about on-premises servers and applications to assist migration planning.|
+|AWS Application Migration Service|Simplifies lift-and-shift migrations by replicating on-premises servers into AWS.|
+|AWS Database Migration Service (AWS DMS)|Migrates databases to AWS with minimal downtime.|
+|AWS Migration Hub|Provides a central dashboard for tracking migration projects across AWS migration services.|
+|AWS Schema Conversion Tool (AWS SCT)|Converts database schemas and code when migrating between different database platforms.|
+|AWS Snow Family|Physical devices used to transfer large amounts of data into and out of AWS.|
+|AWS Transfer Family|Managed file transfer service supporting SFTP, FTPS, and FTP access to AWS storage.|
+|**NETWORKING AND CONTENT DELIVERY**|
+|Amazon API Gateway|Creates, publishes, secures, and manages APIs at any scale.|
+|Amazon CloudFront|AWS's global Content Delivery Network (CDN) that caches content closer to users.|
+|AWS Direct Connect|Provides a dedicated private network connection from on-premises infrastructure to AWS.|
+|AWS Global Accelerator|Improves application performance by routing traffic across AWS's global network.|
+|Amazon Route 53|A highly available DNS and domain registration service.|
+|Amazon VPC|A logically isolated virtual network where AWS resources are launched and managed.|
+|AWS VPN|Establishes encrypted connections between on-premises networks and AWS.|
+|SECURITY IDENTITY AND COMPLIANCE|
+|AWS Artifact|Provides access to AWS compliance reports and security documentation.|
+|AWS Audit Manager|Automates evidence collection for audits and compliance assessments.|
+|AWS Certificate Manager (ACM)|Creates, manages, and renews SSL/TLS certificates.|
+|AWS CloudHSM|Provides dedicated hardware security modules (HSMs) for cryptographic key storage.|
+|Amazon Cognito|Handles user authentication, authorisation, and user management for applications.|
+|Amazon Detective|Investigates and analyses security events using AWS log data.|
+|AWS Directory Service|Provides managed Microsoft Active Directory and directory integration services.|
+|AWS Firewall Manager|Centralises management of firewall and security policies across accounts.|
+|Amazon GuardDuty|Intelligently detects threats and suspicious activity within AWS environments.|
+|AWS Identity and Access Management (IAM)|Controls who can access AWS resources and what actions they can perform.|
+|AWS IAM Identity Center (AWS Single Sign-On)|Provides centralised access management and single sign-on across AWS accounts and applications.|
+|Amazon Inspector|Automatically scans workloads for vulnerabilities and security issues.|
+|AWS Key Management Service (AWS KMS)|Creates and manages encryption keys used by AWS services and applications.|
+|Amazon Macie|Uses machine learning to discover and protect sensitive data stored in Amazon S3.|
+|AWS Network Firewall|A managed firewall service for filtering and inspecting VPC traffic.|
+|AWS Resource Access Manager (AWS RAM)|Allows AWS resources to be securely shared between AWS accounts.|
+|AWS Secrets Manager|Securely stores and automatically rotates secrets such as passwords and API keys.|
+|AWS Security Hub|Provides a centralised view of security findings from multiple AWS services.|
+|AWS Shield|Protects applications against Distributed Denial of Service (DDoS) attacks.|
+|AWS WAF|Protects web applications from common web exploits and malicious traffic.|
+|**SERVERLESS**|
+|AWS Fargate|A serverless compute engine for containers that removes the need to manage servers.|
+|AWS Lambda|Runs code in response to events without provisioning or managing servers.|
+|**STORAGE**|
+|AWS Backup|A centralised service for managing backups across multiple AWS services.|
+|Amazon Elastic Block Store (Amazon EBS)|Persistent block storage volumes designed for use with EC2 instances.|
+|Amazon Elastic File System (Amazon EFS)|A scalable file storage system that can be shared across multiple EC2 instances.|
+|AWS Elastic Disaster Recovery|Provides rapid recovery of applications and servers following outages or disasters.|
+|Amazon FSx|Provides fully managed file systems built on popular technologies such as Windows File Server, NetApp ONTAP, OpenZFS, and Lustre.|
+|Amazon S3|Highly durable and scalable object storage for files, backups, websites, and analytics.|
+|Amazon S3 Glacier|Low-cost archive storage designed for long-term retention and infrequently accessed data.|
+|AWS Storage Gateway|Connects on-premises environments to AWS storage services, enabling hybrid cloud storage solutions.|
